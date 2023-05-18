@@ -17,12 +17,15 @@ import com.lordkajoc.challenge_chapter_enam.R
 import com.lordkajoc.challenge_chapter_enam.databinding.FragmentHomeBinding
 import com.lordkajoc.challenge_chapter_enam.view.adapter.AdapterFilm
 import com.lordkajoc.challenge_chapter_enam.viewmodel.ViewModelFilmPopular
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var viewModel: ViewModelFilmPopular
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,8 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel = ViewModelProvider(this)[ViewModelFilmPopular::class.java]
+        observeMovie()
         (activity as AppCompatActivity).setSupportActionBar(binding.tbHome)
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -62,16 +66,26 @@ class HomeFragment : Fragment() {
             addUser.apply()
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
-        val viewModelMovie = ViewModelProvider(this)[ViewModelFilmPopular::class.java]
-        viewModelMovie.callTmdb()
-        viewModelMovie.liveDataMovie.observe(viewLifecycleOwner) {
+//        val viewModelMovie = ViewModelProvider(this)[ViewModelFilmPopular::class.java]
+//        viewModelMovie.callTmdb()
+//        viewModelMovie.liveDataMovie.observe(viewLifecycleOwner) {
+//            if (it != null) {
+//                binding.rvListfilm.layoutManager =
+//                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//                binding.rvListfilm.adapter = AdapterFilm(it)
+//            }
+//        }
+
+    }
+    private fun observeMovie(){
+        binding.rvListfilm.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvListfilm.setHasFixedSize(false)
+        viewModel.setMoviesList()
+        viewModel.movie.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.rvListfilm.layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 binding.rvListfilm.adapter = AdapterFilm(it)
             }
         }
-
     }
 
 }

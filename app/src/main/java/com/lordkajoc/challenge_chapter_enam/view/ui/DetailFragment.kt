@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.lordkajoc.challenge_chapter_enam.databinding.FragmentDetailBinding
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieItem
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     override fun onCreateView(
