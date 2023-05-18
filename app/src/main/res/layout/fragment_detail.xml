@@ -82,9 +82,7 @@
         android:layout_margin="20dp"
         android:backgroundTint="@color/white"
         android:contentDescription="fav"
-        app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:backgroundTint="@color/white" />
 
     <Button
         android:id="@+id/btn_crashdetail"

@@ -70,11 +70,17 @@ class DetailFragment : Fragment() {
             binding.apply {
                 if (it != null) {
                     binding.tvNamafilmdetail.text = it.title.toString()
-                    binding.tvReleasefilmdetail.text = it.releaseDate.toString()
+                    binding.tvReleasefilmdetail.text = "Release: " + it.releaseDate.toString()
+                    binding.tvPopularitydetail.text = "Popularity: " + it.popularity.toString()
                     Glide.with(requireContext())
                         .load("https://image.tmdb.org/t/p/w500/" + it.backdropPath)
                         .into(binding.ivFilmimagedetail)
-                    binding.tvSinopsisfilmdetail.text = it.overview.toString()
+                    //        binding.tvSinopsisfilmdetail.text = """Overview:
+//            ${getfilm.overview}
+//        """.trimIndent()
+                    binding.tvSinopsisfilmdetail.text = """Overview:
+                        |
+                    """.trimMargin() + it.overview.toString()
                     selectedMovie = FavoriteMovie(
                         it.id!!,
                         it.title!!,
