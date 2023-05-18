@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".view.ui.HomeFragment">
+    tools:context=".view.ui.FavoriteFragment">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_home"
+        android:id="@+id/tb_favorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/putih">
@@ -22,42 +22,19 @@
                 style="@style/textjudul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:text="Welcome," />
-
-            <ImageView
-                android:id="@+id/iv_icprofile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_person" />
-            <ImageView
-                android:id="@+id/iv_icfavhome"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_toLeftOf="@id/iv_icprofile"
-                android:src="@drawable/ic_fav" />
+                android:text="FAVORITE" />
 
         </RelativeLayout>
 
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tv_home"
-        style="@style/textjudul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_home"
-        android:layout_centerHorizontal="true"
-        android:text="Home" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_listfilm"
+        android:id="@+id/rv_listfilmfav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_home"
+        android:layout_below="@+id/tb_favorite"
         android:layout_marginTop="20sp" />
 
 </RelativeLayout>

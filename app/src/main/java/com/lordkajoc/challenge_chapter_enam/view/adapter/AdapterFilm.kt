@@ -3,7 +3,7 @@ package com.lordkajoc.challenge_chapter_enam.view.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lordkajoc.challenge_chapter_enam.R
@@ -14,14 +14,26 @@ class AdapterFilm(private var listFilm: List<PopularMovieItem>) :
     RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
 
     class ViewHolder(var binding: ItemFilmBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindFilms(itemFilms: PopularMovieItem){
+        private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
+        fun bindFilms(itemFilms: PopularMovieItem) {
             binding.film = itemFilms
-            binding.cardView.setOnClickListener{
-                val bundle = Bundle()
-                bundle.putSerializable("BUNDEL", itemFilms)
-                Navigation.findNavController(itemView).navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+            Glide.with(itemView).load(IMAGE_BASE + itemFilms.posterPath).into(binding.imgFilm)
+            binding.cardView.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putInt("ID", itemFilms.id.toString().toInt())
+                }
+                it.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
             }
         }
+//        fun bindFilms(itemFilms: PopularMovieItem){
+//            binding.film = itemFilms
+//            binding.cardView.setOnClickListener{
+//                val bundle = Bundle().apply {
+//                    putInt("ID",itemFilms.id.toString().toInt())
+//                }
+//                Navigation.findNavController(itemView).navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+//            }
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,12 +46,6 @@ class AdapterFilm(private var listFilm: List<PopularMovieItem>) :
         Glide.with(holder.itemView)
             .load("https://image.tmdb.org/t/p/w500${listFilm[position].posterPath}")
             .into(holder.binding.imgFilm)
-
-        holder.itemView.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putSerializable("BUNDEL", listFilm[position])
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_detailFragment, bundle)
-        }
     }
 
     override fun getItemCount(): Int {

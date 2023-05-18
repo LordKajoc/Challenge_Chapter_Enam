@@ -1,8 +1,13 @@
 package com.lordkajoc.challenge_chapter_enam.data.network
 
+import android.content.Context
+import androidx.room.Room
+import com.lordkajoc.challenge_chapter_enam.data.local.FavoriteMovieDao
+import com.lordkajoc.challenge_chapter_enam.data.local.FavoriteMovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,5 +33,16 @@ class ApiClient {
             .client(client)
             .build()
         return retrofit.create(ApiService::class.java)
+    }
+
+    @Provides
+    fun provideFavoriteDAO(db : FavoriteMovieDatabase) : FavoriteMovieDao = db.favoriteDao()
+
+    @Singleton
+    @Provides
+    fun provideDB(@ApplicationContext context: Context) : FavoriteMovieDatabase {
+        return Room.databaseBuilder(context, FavoriteMovieDatabase::class.java, "favorite.db")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }

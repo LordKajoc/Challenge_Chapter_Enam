@@ -66,6 +66,9 @@ class HomeFragment : Fragment() {
             addUser.apply()
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+        binding.ivIcfavhome.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+        }
 //        val viewModelMovie = ViewModelProvider(this)[ViewModelFilmPopular::class.java]
 //        viewModelMovie.callTmdb()
 //        viewModelMovie.liveDataMovie.observe(viewLifecycleOwner) {

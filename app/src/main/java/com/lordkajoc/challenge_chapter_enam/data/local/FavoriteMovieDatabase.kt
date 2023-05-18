@@ -1,11 +1,27 @@
-//package com.lordkajoc.challenge_chapter_enam.data.local
+package com.lordkajoc.challenge_chapter_enam.data.local
+
+import androidx.room.Database
+import androidx.room.RoomDatabase
+
+@Database(entities = [FavoriteMovie::class], version = 1)
+abstract class FavoriteMovieDatabase : RoomDatabase() {
+    abstract fun favoriteDao(): FavoriteMovieDao
+//    companion object{
+//        private var INSTANCE : FavoriteMovieDatabase? = null
 //
-//import android.content.Context
-//import androidx.room.Database
-//import androidx.room.Room
-//import androidx.room.RoomDatabase
+//        fun getInstance(context : Context):FavoriteMovieDatabase? {
+//            if (INSTANCE == null){
+//                synchronized(FavoriteMovieDatabase::class){
+//                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+//                        FavoriteMovieDatabase::class.java,"favoritmovie.db").build()
+//                }
+//            }
+//            return INSTANCE
+//        }
 //
-//@Database(entities = [FavoriteMovie::class], version = 1)
-//abstract class FavoriteMovieDatabase : RoomDatabase() {
-//    abstract fun favoriteDao(): FavoriteMovieDao
-//}
+//        fun destroyInstance(){
+//            INSTANCE = null
+//        }
+//    }
+
+}
