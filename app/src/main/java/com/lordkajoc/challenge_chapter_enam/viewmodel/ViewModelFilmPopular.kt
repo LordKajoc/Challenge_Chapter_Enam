@@ -1,18 +1,13 @@
 package com.lordkajoc.challenge_chapter_enam.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.lordkajoc.challenge_chapter_enam.data.network.ApiClient
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieItem
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieResponse
-import com.lordkajoc.challenge_chapter_enam.network.ApiClient
-import com.lordkajoc.challenge_chapter_enam.network.ApiService
-import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 class ViewModelFilmPopular : ViewModel() {
     var liveDataMovie: MutableLiveData<List<PopularMovieItem>?> = MutableLiveData()

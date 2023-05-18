@@ -1,4 +1,4 @@
-package com.lordkajoc.challenge_chapter_enam.network
+package com.lordkajoc.challenge_chapter_enam.data.network
 
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieResponse
 import retrofit2.Call

@@ -1,4 +1,4 @@
-package com.lordkajoc.challenge_chapter_enam.network
+package com.lordkajoc.challenge_chapter_enam.data.network
 
 import dagger.Module
 import dagger.Provides
@@ -16,9 +16,9 @@ object ApiClient {
     const val BASE_URL = "https://api.themoviedb.org/3/"
     val logging: HttpLoggingInterceptor
 
-    @Singleton
-    @Provides
-            get() {
+        @Singleton
+        @Provides
+        get() {
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             return httpLoggingInterceptor.apply {
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
