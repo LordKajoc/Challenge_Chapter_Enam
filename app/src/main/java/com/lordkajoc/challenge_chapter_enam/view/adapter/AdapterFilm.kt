@@ -25,15 +25,6 @@ class AdapterFilm(private var listFilm: List<PopularMovieItem>) :
                 it.findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
             }
         }
-//        fun bindFilms(itemFilms: PopularMovieItem){
-//            binding.film = itemFilms
-//            binding.cardView.setOnClickListener{
-//                val bundle = Bundle().apply {
-//                    putInt("ID",itemFilms.id.toString().toInt())
-//                }
-//                Navigation.findNavController(itemView).navigate(R.id.action_homeFragment_to_detailFragment, bundle)
-//            }
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

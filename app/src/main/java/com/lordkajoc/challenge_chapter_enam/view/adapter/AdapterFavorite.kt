@@ -23,11 +23,12 @@ class AdapterFavorite(private val listMovie: List<FavoriteMovie>) :
                     Glide.with(itemView.context)
                         .load("https://image.tmdb.org/t/p/w400${movie.posterPath}")
                         .into(binding.imgFilm)
-                    cardView.setOnClickListener{
+                    cardView.setOnClickListener {
                         val bundle = Bundle().apply {
                             putInt("ID", movie.id.toString().toInt())
                         }
-                        it.findNavController().navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
+                        it.findNavController()
+                            .navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
                     }
                 }
             }

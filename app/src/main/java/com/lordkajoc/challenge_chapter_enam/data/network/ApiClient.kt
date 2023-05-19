@@ -36,11 +36,11 @@ class ApiClient {
     }
 
     @Provides
-    fun provideFavoriteDAO(db : FavoriteMovieDatabase) : FavoriteMovieDao = db.favoriteDao()
+    fun provideFavoriteDAO(db: FavoriteMovieDatabase): FavoriteMovieDao = db.favoriteDao()
 
     @Singleton
     @Provides
-    fun provideDB(@ApplicationContext context: Context) : FavoriteMovieDatabase {
+    fun provideDB(@ApplicationContext context: Context): FavoriteMovieDatabase {
         return Room.databaseBuilder(context, FavoriteMovieDatabase::class.java, "favorite.db")
             .fallbackToDestructiveMigration()
             .build()

@@ -8,10 +8,10 @@ import androidx.room.Query
 @Dao
 interface FavoriteMovieDao {
     @Query("SELECT * FROM FavoriteMovie")
-    fun getAllFavorite() : List<FavoriteMovie>
+    fun getAllFavorite(): List<FavoriteMovie>
 
     @Query("SELECT EXISTS(SELECT id FROM FavoriteMovie WHERE id = :id)")
-    fun isFavoriteMovie(id : Int) : Boolean
+    fun isFavoriteMovie(id: Int): Boolean
 
     @Insert
     fun addFavorite(favoriteMovie: FavoriteMovie)

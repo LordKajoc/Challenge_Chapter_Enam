@@ -3,7 +3,6 @@ package com.lordkajoc.challenge_chapter_enam.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lordkajoc.challenge_chapter_enam.data.network.ApiClient
 import com.lordkajoc.challenge_chapter_enam.data.network.ApiService
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieItem
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieResponse

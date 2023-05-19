@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewModelDetailMovie @Inject constructor(
-    private val movieClient: ApiService, val db: FavoriteMovieDao
+    private val movieClient: ApiService, private val db: FavoriteMovieDao
 ) : ViewModel() {
     private val _movie: MutableLiveData<DetailMovieItem?> = MutableLiveData()
     val movie: LiveData<DetailMovieItem?> get() = _movie

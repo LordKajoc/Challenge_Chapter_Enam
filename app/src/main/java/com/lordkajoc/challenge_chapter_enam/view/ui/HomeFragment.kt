@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var viewModel: ViewModelFilmPopular
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(binding.tbHome)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        if(firebaseAuth.currentUser == null){
+        if (firebaseAuth.currentUser == null) {
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
 
@@ -69,18 +69,9 @@ class HomeFragment : Fragment() {
         binding.ivIcfavhome.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
         }
-//        val viewModelMovie = ViewModelProvider(this)[ViewModelFilmPopular::class.java]
-//        viewModelMovie.callTmdb()
-//        viewModelMovie.liveDataMovie.observe(viewLifecycleOwner) {
-//            if (it != null) {
-//                binding.rvListfilm.layoutManager =
-//                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//                binding.rvListfilm.adapter = AdapterFilm(it)
-//            }
-//        }
-
     }
-    private fun observeMovie(){
+
+    private fun observeMovie() {
         binding.rvListfilm.layoutManager = LinearLayoutManager(requireContext())
         binding.rvListfilm.setHasFixedSize(false)
         viewModel.setMoviesList()

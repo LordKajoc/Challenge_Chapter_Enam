@@ -3,11 +3,11 @@ package com.lordkajoc.challenge_chapter_enam.view.ui
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.lordkajoc.challenge_chapter_enam.R
@@ -29,8 +29,6 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,38 +74,5 @@ class ProfileFragment : Fragment() {
             Toast.makeText(context, "Keluar Berhasil", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
-
-
-//            binding.pro.setOnClickListener {
-//                firebaseAuth = FirebaseAuth.getInstance()
-//                firebaseAuth.signOut()
-//                Toast.makeText(context, "Keluar Berhasil", Toast.LENGTH_SHORT).show()
-//                findNavController().navigate(R.id.action_profileFragment_to_loginFragment,)
-//
-////                getActivity().getFragmentManager().popBackStack();
-//            }
-
-
-//            addUser.putString("email", getEmail)
-//            addUser.putString("password", getPass)
-//            addUser.putString("repeadPassword", getRepeatPass)
-//            if (getPass == getRepeatPass) {
-//                addUser.apply()
-//                Toast.makeText(context, "Register Berhasil", Toast.LENGTH_SHORT).show()
-//                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-//            } else {
-//                Toast.makeText(
-//                    context,
-//                    "Ulangi password yang anda masukan tidak sama",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-
-
     }
-
-//    private fun signout() {
-//        firebaseAuth = FirebaseAuth.getInstance()
-//        firebaseAuth.signOut()
-//    }
 }

@@ -37,6 +37,11 @@ android {
         viewBinding true
         dataBinding true
     }
+    lint{
+        disable 'Overdraw'
+        lintConfig file("lint.xml")
+        disable 'IconLocation'
+    }
 }
 
 dependencies {

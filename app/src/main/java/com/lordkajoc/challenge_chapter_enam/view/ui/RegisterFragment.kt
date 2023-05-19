@@ -3,11 +3,11 @@ package com.lordkajoc.challenge_chapter_enam.view.ui
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.lordkajoc.challenge_chapter_enam.R
@@ -27,8 +27,6 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,39 +44,26 @@ class RegisterFragment : Fragment() {
             val addUser = sharedRegis.edit()
             addUser.putString("user", getUsername)
 
-            if (getUsername.isNotEmpty()&& getEmail.isNotEmpty() && getPass.isNotEmpty() && getRepeatPass.isNotEmpty()){
-                if (getPass == getRepeatPass){
+            if (getUsername.isNotEmpty() && getEmail.isNotEmpty() && getPass.isNotEmpty() && getRepeatPass.isNotEmpty()) {
+                if (getPass == getRepeatPass) {
                     addUser.apply()
-                    firebaseAuth.createUserWithEmailAndPassword(getEmail, getPass).addOnCompleteListener{
-                        if (it.isSuccessful){
-                            Toast.makeText(context, "Register Berhasil", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                        } else{
-                            Toast.makeText(context,it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    firebaseAuth.createUserWithEmailAndPassword(getEmail, getPass)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(context, "Register Berhasil", Toast.LENGTH_SHORT)
+                                    .show()
+                                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                            } else {
+                                Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         }
-                    }
-                }else{
+                } else {
                     Toast.makeText(context, "Password tidak Sesuai", Toast.LENGTH_SHORT).show()
                 }
-            }else{
+            } else {
                 Toast.makeText(context, "Data Belum Lengkap", Toast.LENGTH_SHORT).show()
             }
-
-
-//            addUser.putString("email", getEmail)
-//            addUser.putString("password", getPass)
-//            addUser.putString("repeadPassword", getRepeatPass)
-//            if (getPass == getRepeatPass) {
-//                addUser.apply()
-//                Toast.makeText(context, "Register Berhasil", Toast.LENGTH_SHORT).show()
-//                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-//            } else {
-//                Toast.makeText(
-//                    context,
-//                    "Ulangi password yang anda masukan tidak sama",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
         }
     }
 }
