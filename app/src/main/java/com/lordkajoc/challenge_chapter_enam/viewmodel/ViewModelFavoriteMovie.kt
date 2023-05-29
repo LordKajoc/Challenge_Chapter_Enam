@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 //HiltViewModel dan Dependency Injection ke FavoriteMovieDao
+@Suppress("PrivatePropertyName")
 @HiltViewModel
 class ViewModelFavoriteMovie @Inject constructor(private val db: FavoriteMovieDao) : ViewModel() {
 

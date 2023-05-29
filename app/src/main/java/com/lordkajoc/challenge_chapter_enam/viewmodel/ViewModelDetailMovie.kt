@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package com.lordkajoc.challenge_chapter_enam.viewmodel
 
 import androidx.lifecycle.LiveData
@@ -16,6 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
+@Suppress("PrivatePropertyName")
 @HiltViewModel
 class ViewModelDetailMovie @Inject constructor(
     private val movieClient: ApiService, private val db: FavoriteMovieDao

@@ -17,6 +17,7 @@ import com.lordkajoc.challenge_chapter_enam.viewmodel.ViewModelDetailMovie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
+@Suppress("KotlinConstantConditions")
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 

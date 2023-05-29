@@ -10,6 +10,7 @@ import com.lordkajoc.challenge_chapter_enam.R
 import com.lordkajoc.challenge_chapter_enam.data.local.FavoriteMovie
 import com.lordkajoc.challenge_chapter_enam.databinding.ItemFilmfavBinding
 
+@Suppress("unused")
 class AdapterFavorite(private val listMovie: List<FavoriteMovie>) :
     RecyclerView.Adapter<AdapterFavorite.ViewHolder>() {
 
@@ -17,19 +18,17 @@ class AdapterFavorite(private val listMovie: List<FavoriteMovie>) :
     class ViewHolder(var binding: ItemFilmfavBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindFilms(movie: FavoriteMovie) {
-            with(itemView) {
-                binding.apply {
-                    binding.filmfav = movie
-                    Glide.with(itemView.context)
-                        .load("https://image.tmdb.org/t/p/w400${movie.posterPath}")
-                        .into(binding.imgFilm)
-                    cardView.setOnClickListener {
-                        val bundle = Bundle().apply {
-                            putInt("ID", movie.id.toString().toInt())
-                        }
-                        it.findNavController()
-                            .navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
+            binding.apply {
+                binding.filmfav = movie
+                Glide.with(itemView.context)
+                    .load("https://image.tmdb.org/t/p/w400${movie.posterPath}")
+                    .into(binding.imgFilm)
+                cardView.setOnClickListener {
+                    val bundle = Bundle().apply {
+                        putInt("ID", movie.id.toString().toInt())
                     }
+                    it.findNavController()
+                        .navigate(R.id.action_favoriteFragment_to_detailFragment, bundle)
                 }
             }
 

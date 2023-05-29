@@ -18,7 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class ApiClient {
-
     @Singleton
     @Provides
     fun getMovieService(): ApiService {

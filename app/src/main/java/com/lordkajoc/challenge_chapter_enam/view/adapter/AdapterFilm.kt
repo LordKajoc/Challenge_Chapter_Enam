@@ -1,3 +1,9 @@
+@file:Suppress("PrivatePropertyName", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused"
+)
+
 package com.lordkajoc.challenge_chapter_enam.view.adapter
 
 import android.os.Bundle
@@ -10,6 +16,7 @@ import com.lordkajoc.challenge_chapter_enam.R
 import com.lordkajoc.challenge_chapter_enam.databinding.ItemFilmBinding
 import com.lordkajoc.challenge_chapter_enam.model.PopularMovieItem
 
+@Suppress("PrivatePropertyName", "unused", "unused", "unused", "unused")
 class AdapterFilm(private var listFilm: List<PopularMovieItem>) :
     RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
 
